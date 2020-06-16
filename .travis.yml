@@ -1,0 +1,18 @@
+language: java
+jdk:
+        - openjdk8
+addons:
+        sonarcloud:
+                organization: torkin1
+                token:
+                        5ed64efeb70f6dfaa4179babc38f92dfbaa3126a
+        apt:
+                packages:
+                        openjdk-8-jre-headless
+
+before-install:
+        - sudo apt-get update -q
+        - sudo apt-get install ant-optional openjfx -y
+script:
+        - ant -v build
+        - sonar-scanner
